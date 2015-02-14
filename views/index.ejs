@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Csgo inventory</title>
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+</head>
+<body>
+	<div id="container">
+		<div id="worth">
+			Your inventory is worth : <%= value %>
+		</div>
+
+		<% if(err.length > 0 ) {%>
+			<span class="error"> But there are <%= err.length %> error(s)</span>
+			<table class="error-table">
+				<thead>
+					<td>Errors : </td>
+					<td>data: </td>
+				</thead>
+				<% for(var i = 0;i<err.length;i++){ %>
+					<tr>
+						<td><%= err[i].error %></td>
+						<td><%= err[i].data %></td>
+					</tr>
+				<% }%>
+			</table>
+		<% } %>
+
+		Your inventory :
+		<div id="inventory"></div>
+		<script type="text/javascript">
+			var inventory = <%-JSON.stringify(inventory)%>;
+			for(var key in inventory.rgInventory){
+				console.log(inventory.rgInventory[key]);
+				document.getElementById("inventory").innerHTML+=inventory.rgInventory[key].market_hash_name;
+			}
+		</script>
+	</div>
+
+</body>
+</html>
