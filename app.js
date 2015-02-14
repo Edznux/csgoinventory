@@ -21,7 +21,6 @@ app.get('/:nickname', function(req, res){
 			// console.log(data);
 			steam.clearErrors();
 			total = steam.totalPrice(data);
-			console.log(d);
 			res.render('index',{"inventory": d, "value" : total,"err" :steam.errors});
 			// res.send("Votre inventaire vaux : "+total + " <br> Avec " + steam.errors.length + " erreur(s)" + steam.errors);
 		});

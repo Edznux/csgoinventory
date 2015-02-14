@@ -28,12 +28,23 @@
 		<% } %>
 
 		Your inventory :
-		<div id="inventory"></div>
+		<!-- <div id="inventory"></div> -->
+		<table id="inventory"></table>
 		<script type="text/javascript">
 			var inventory = <%-JSON.stringify(inventory)%>;
-			for(var key in inventory.rgInventory){
-				console.log(inventory.rgInventory[key]);
-				document.getElementById("inventory").innerHTML+=inventory.rgInventory[key].market_hash_name;
+			var cpt=0;
+			var table = document.getElementById('inventory');
+			var row;
+			for(var key in inventory.rgDescriptions){
+				row = table.insertRow(cpt);
+				console.log(inventory.rgDescriptions[key]);
+				console.log(inventory.rgDescriptions[key].market_hash_name);
+				var image = row.insertCell(0);
+				image.innerHTML="<img class='weapons-image' src='http://steamcommunity-a.akamaihd.net/economy/image/"+ inventory.rgDescriptions[key].icon_url+"'/>";
+				var item = row.insertCell(1);
+				item.innerHTML=inventory.rgDescriptions[key].market_hash_name;
+				// document.getElementById("inventory").innerHTML+=inventory.rgDescriptions[key].market_hash_name +"<br/>";
+				cpt++;
 			}
 		</script>
 	</div>

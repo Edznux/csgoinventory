@@ -7,3 +7,9 @@ body{
 .error{
 	color: #BB5500;
 }
+.weapons-image{
+	/*
+	original : 512×384
+	*/
+	width: 100px;
+}
